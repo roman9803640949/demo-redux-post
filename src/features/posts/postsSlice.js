@@ -8,7 +8,7 @@ const initialState = [
       "Learning Redux ToolkitLearning Redux ToolkitLearning Redux Toolkit",
   },
   {
-    id: "1",
+    id: "2",
     title: "Learning slices",
     content: "Learning slicesLearning slicesLearning slices",
   },
@@ -22,12 +22,13 @@ const postsSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(title, content) {
+      prepare(title, content, userId) {
         return {
           payload: {
             id: nanoid(),
             title,
             content,
+            userId,
           },
         };
       },
