@@ -1,15 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = [
-    {id:'1',title:'Learning Redux Toolkit',content:"Learning Redux ToolkitLearning Redux ToolkitLearning Redux Toolkit"},
-    {id:'1',title:'Learning slices',content:"Learning slicesLearning slicesLearning slices"},
-]
+  {
+    id: "1",
+    title: "Learning Redux Toolkit",
+    content:
+      "Learning Redux ToolkitLearning Redux ToolkitLearning Redux Toolkit",
+  },
+  {
+    id: "1",
+    title: "Learning slices",
+    content: "Learning slicesLearning slicesLearning slices",
+  },
+];
 
 const postsSlice = createSlice({
-    name: "post",
-    initialState,
-    reducers:{}
-})
-export const selectAllPosts = (state) => state.posts
-export default postsSlice.reducer
+  name: "post",
+  initialState,
+  reducers: {
+    postAdded: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(title, content) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            content,
+          },
+        };
+      },
+    },
+  },
+});
+export const selectAllPosts = (state) => state.posts;
+
+export const { postAdded } = postsSlice.actions;
+
+export default postsSlice.reducer;
