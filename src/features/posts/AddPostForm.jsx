@@ -51,6 +51,7 @@ const AddPostForm = () => {
             id="userId"
             value={userId}
             onChange={onAuthorChanged}
+            label="Select User"
           >
             {users.map((user, index) => (
               <option value={user.id} key={index}>
