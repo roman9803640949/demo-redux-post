@@ -25,7 +25,7 @@ const ReactionButton = ({ post }) => {
           key={name}
           onClick={() => addReaction(post.id, name)}
         >
-          {emoji} , {post.reactions[name]}
+          {emoji} {post.reactions[name]}
         </button>
       ))}
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PostAuthor from "./PostAuthor";
 import {
   selectAllPosts,
   getPostsStatus,
@@ -8,8 +7,6 @@ import {
   fetchPosts,
 } from "./postsSlice";
 
-import ReactionButton from "./ReactionButton";
-import TimeAgo from "./TimeAgo";
 import "./PostsList.css";
 import PostsExcerpt from "./PostsExcerpt";
 const PostsList = () => {
@@ -30,8 +27,8 @@ const PostsList = () => {
     const orderedPosts = posts
       .slice()
       .sort((a, b) => b.date.localeCompare(a.date));
-    content = orderedPosts.map((post) => (
-      <PostsExcerpt key={post.id} post={post} />
+    content = orderedPosts.map((post, index) => (
+      <PostsExcerpt key={`post-${post.id}-${index}`} post={post} />
     ));
   } else if (postStatus === "failed") {
     content = <p> {error}</p>;
