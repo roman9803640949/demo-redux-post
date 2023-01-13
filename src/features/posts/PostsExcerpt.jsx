@@ -8,7 +8,7 @@ import TimeAgo from "./TimeAgo";
 
 const PostsExcerpt = ({ post }) => {
   const dispatch = useDispatch();
-  const onDeletePostClicked = () => dispatch(deletePost({ id: post.id }));
+  const onDeletePostClicked = () => dispatch(deletePost(post));
   return (
     <div>
       <article key={post.id}>
